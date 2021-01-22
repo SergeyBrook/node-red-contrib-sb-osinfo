@@ -1,0 +1,57 @@
+<!-- SB Disk node -->
+
+<script type="text/javascript">
+	RED.nodes.registerType('sb-disk', {
+		category: 'sb utils',
+		color: '#AAAA66',
+		defaults: {
+			name: {value: ''},
+			unit: {value: '0'},
+			local: {value: true}
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: 'font-awesome/fa-hdd-o',
+		paletteLabel: 'disk',
+		label: function() {
+			return this.name || 'disk';
+		},
+		labelStyle: function() {
+			return this.name ? "node_label_italic" : "";
+		},
+	});
+</script>
+
+<script type="text/html" data-template-name="sb-disk">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-unit"><i class="fa fa-sliders"></i> Units</label>
+		<select id="node-input-unit" style="width: 70%;">
+			<option value="0">B</option>
+			<option value="1">KiB</option>
+			<option value="2">MiB</option>
+			<option value="3">GiB</option>
+			<option value="4">TiB</option>
+			<option value="5">PiB</option>
+		</select>
+	</div>
+	<div class="form-row" id="node-field-local">
+		<label><i class="fa fa-sign-out"></i> Output</label>
+		<input type="checkbox" id="node-input-local" style="width: auto; vertical-align: top;">
+		<label for="node-input-local" style="width: auto; padding-left: 0.5em;">Local disks only</label>
+	</div>
+</script>
+
+<script type="text/html" data-help-name="sb-disk">
+	<p>SB Disk node</p>
+	<h3>Details</h3>
+		<p>Creates SB Disk node:
+			<ul>
+				<li>'Name' - node name.</li>
+				<li>'Units' - units.</li>
+			</ul>
+		</p>
+</script>

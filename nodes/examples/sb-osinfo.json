@@ -1,0 +1,288 @@
+[
+    {
+        "id": "2e7d64da.0b0f0c",
+        "type": "tab",
+        "label": "SB OSInfo Dev",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1f4f652a.70270b",
+        "type": "inject",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Inject",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "2d3e3379.a14d2c"
+            ]
+        ]
+    },
+    {
+        "id": "4e1a0b47.ad7774",
+        "type": "inject",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Inject",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "9b1b9050.83e248"
+            ]
+        ]
+    },
+    {
+        "id": "adb135.30e12ec8",
+        "type": "debug",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Memory info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9b1b9050.83e248",
+        "type": "sb-memory",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Memory",
+        "unit": "3",
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "adb135.30e12ec8"
+            ]
+        ]
+    },
+    {
+        "id": "2d3e3379.a14d2c",
+        "type": "sb-disk",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Disk",
+        "unit": "3",
+        "local": true,
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "ee06f2c1.db6f58"
+            ]
+        ]
+    },
+    {
+        "id": "ee06f2c1.db6f58",
+        "type": "split",
+        "z": "2e7d64da.0b0f0c",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 530,
+        "y": 80,
+        "wires": [
+            [
+                "f52173af.f588e"
+            ]
+        ]
+    },
+    {
+        "id": "f52173af.f588e",
+        "type": "debug",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Disk info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bd06f6e7.3c71",
+        "type": "sb-file",
+        "z": "2e7d64da.0b0f0c",
+        "name": "File",
+        "unit": "2",
+        "filename": "",
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "69970bf5.2e65ec"
+            ]
+        ]
+    },
+    {
+        "id": "5a2ceee3.13ab08",
+        "type": "inject",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Filename",
+        "props": [
+            {
+                "p": "filename",
+                "v": "D:\\Prod\\Node-RED\\store\\main.db",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "bd06f6e7.3c71"
+            ]
+        ]
+    },
+    {
+        "id": "69970bf5.2e65ec",
+        "type": "debug",
+        "z": "2e7d64da.0b0f0c",
+        "name": "File info",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d0c0e5e7.dcfa1",
+        "type": "catch",
+        "z": "2e7d64da.0b0f0c",
+        "name": "File",
+        "scope": [
+            "bd06f6e7.3c71"
+        ],
+        "uncaught": false,
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "fbe1f973.50f15"
+            ]
+        ]
+    },
+    {
+        "id": "fbe1f973.50f15",
+        "type": "debug",
+        "z": "2e7d64da.0b0f0c",
+        "name": "File error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6d8633bd.5a7b24",
+        "type": "catch",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Disk",
+        "scope": [
+            "2d3e3379.a14d2c"
+        ],
+        "uncaught": false,
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "bce8a691.3a2cc8"
+            ]
+        ]
+    },
+    {
+        "id": "bce8a691.3a2cc8",
+        "type": "debug",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Disk error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b9522408.e3a28",
+        "type": "catch",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Memory",
+        "scope": [
+            "9b1b9050.83e248"
+        ],
+        "uncaught": false,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "2ebc3561.b32512"
+            ]
+        ]
+    },
+    {
+        "id": "2ebc3561.b32512",
+        "type": "debug",
+        "z": "2e7d64da.0b0f0c",
+        "name": "Memory error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 360,
+        "wires": []
+    }
+]
