@@ -1,0 +1,53 @@
+<!-- SB Network node -->
+
+<script type="text/javascript">
+	RED.nodes.registerType('sb-network', {
+		category: 'sb utils',
+		color: '#AAAA66',
+		defaults: {
+			name: {value: ''},
+			interface: {value: ''},
+			family: {value: 'IPv4'}
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: 'font-awesome/fa-plug',
+		paletteLabel: 'network',
+		label: function() {
+			return this.name || 'network';
+		},
+		labelStyle: function() {
+			return this.name ? "node_label_italic" : "";
+		},
+	});
+</script>
+
+<script type="text/html" data-template-name="sb-network">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-interface"><i class="fa fa-sliders"></i> Interface</label>
+		<input type="text" id="node-input-interface">
+	</div>
+	<div class="form-row">
+		<label for="node-input-family"><i class="fa fa-info-circle"></i> Family</label>
+		<select id="node-input-family" style="width: 70%;">
+			<option value="IPv4">IPv4</option>
+			<option value="IPv6">IPv6</option>
+		</select>
+	</div>
+</script>
+
+<script type="text/html" data-help-name="sb-network">
+	<p>SB Network node</p>
+	<h3>Details</h3>
+		<p>Creates SB Network node:
+			<ul>
+				<li>'Name' - node name.</li>
+				<li>'Interface' - network interface name.</li>
+				<li>'Family' - IPv4 or IPv6.</li>
+			</ul>
+		</p>
+</script>
